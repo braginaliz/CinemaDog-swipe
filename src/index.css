@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-pink-50: #fff5fb;
+  --color-pink-100: #ffe8f5;
+  --color-pink-200: #ffd0eb;
+  --color-pink-300: #ffadd8;
+  --color-pink-400: #ff85c2;
+  --color-pink-500: #f957ad;
+  --color-pink-600: #e03890;
+  --color-pink-700: #c01f74;
+  --color-pink-800: #9e155d;
+  --color-pink-900: #7a0f48;
+
+  --color-rose-400: #ffa3b8;
+  --color-rose-500: #ff7594;
+  --color-rose-600: #f4406a;
+
+--font-sans: 'Sora', system-ui, sans-serif;
+
+  --shadow-card: 0 8px 40px -8px rgba(249, 87, 173, 0.12);
+  --shadow-card-hover: 0 16px 56px -8px rgba(249, 87, 173, 0.22);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: linear-gradient(160deg, #fff5fb 0%, #ffe8f5 40%, #ffd6ee 70%, #fff0f8 100%);
+    min-height: 100dvh;
+    color: #a0336e;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ffadd8;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-shadow-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 180, 220, 0.30);
+  }
+
+  .glass-pink {
+    background: rgba(255, 200, 235, 0.40);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 150, 210, 0.35);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #ffadd8, #f957ad, #e03890);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .no-select {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
