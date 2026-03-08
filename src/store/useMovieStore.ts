@@ -32,7 +32,7 @@ export const useMovieStore = create<MovieStore>()(
 
       loadMovies: async () => {
         const { isLoading } = get()
-        if (isLoading) return // защита от параллельных вызовов
+        if (isLoading) return 
 
         set({ isLoading: true, error: null })
         try {
@@ -84,7 +84,6 @@ export const useMovieStore = create<MovieStore>()(
 
         const [last, ...rest] = history
         set((state) => {
-          // не возвращаем фильм если он уже есть в колоде
           const alreadyInDeck = state.deck.some((m) => m.id === last.movie.id)
           return {
             history: rest,
