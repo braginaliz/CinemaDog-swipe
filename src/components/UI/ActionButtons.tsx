@@ -1,18 +1,25 @@
 interface ActionButtonsProps {
-  onSkip: () => void
-  onSave: () => void
-  onUndo: () => void
-  canUndo: boolean
-  disabled?: boolean
+  onSkip: () => void;
+  onSave: () => void;
+  onUndo: () => void;
+  canUndo: boolean;
+  disabled?: boolean;
 }
 
-export function ActionButtons({ onSkip, onSave, onUndo, canUndo, disabled }: ActionButtonsProps) {
+export function ActionButtons({
+  onSkip,
+  onSave,
+  onUndo,
+  canUndo,
+  disabled,
+}: ActionButtonsProps) {
   return (
-    <div className="
+    <div
+      className="
       flex items-center justify-center gap-4 sm:gap-6 md:gap-8
       mt-6 sm:mt-6 md:mt-10
-    ">
-
+    "
+    >
       {/* Undo */}
       <button
         onClick={onUndo}
@@ -36,18 +43,18 @@ export function ActionButtons({ onSkip, onSave, onUndo, canUndo, disabled }: Act
         "
       >
         <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="w-5 h-5 sm:w-6 sm:h-6"
-  >
-    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-    <path d="M3 3v5h5" />
-  </svg>
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-5 h-5 sm:w-6 sm:h-6"
+        >
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+          <path d="M3 3v5h5" />
+        </svg>
       </button>
 
       {/* Skip */}
@@ -98,7 +105,6 @@ export function ActionButtons({ onSkip, onSave, onUndo, canUndo, disabled }: Act
       >
         ♥
       </button>
-
     </div>
-  )
+  );
 }
