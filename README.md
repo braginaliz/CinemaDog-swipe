@@ -33,7 +33,6 @@ https://braginaliz.github.io/CinemaDog-swipe/
 ```bash
 # Клонировать репозиторий
 git clone 
-cd movie-swipe
 
 # Установить зависимости
 npm install
