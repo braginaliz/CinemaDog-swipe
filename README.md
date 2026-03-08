@@ -30,6 +30,14 @@ https://braginaliz.github.io/CinemaDog-swipe/
 | Zustand | 5 |
 | Framer Motion | 12 |
 
+## API
+
+Данные загружаются с [jsonfakery.com](https://jsonfakery.com/movies/random/20).
+
+> Если сервис недоступен (например, без VPN), в файле `src/api/movies.ts`
+> раскомментируйте моковую функцию `fetchRandomMovies` с подборкой фильмов о собаках
+> и закомментируйте оригинальную.
+
 ## Установка и запуск
 ```bash
 # Клонировать репозиторий
@@ -96,11 +104,4 @@ CINEMADOG-SWIPE/
 ├── tsconfig.node.json
 └── vite.config.ts
 
-## API
-
-Данные загружаются с [jsonfakery.com](https://jsonfakery.com/movies/random/20).
-
-> Если сервис недоступен (например, без VPN), в файле `src/api/movies.ts`
-> раскомментируйте моковую функцию `fetchRandomMovies` с подборкой фильмов о собаках
-> и закомментируйте оригинальную.
 
