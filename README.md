@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# CinemaSwipe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tinder-подобный интерфейс для выбора фильмов. Свайпайте карточки влево или вправо,
+чтобы пропустить или сохранить фильм в список «Буду смотреть».
 
-Currently, two official plugins are available:
+## Демо
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Функционал
 
-## React Compiler
+- **Свайп-колода** — стек карточек, верхняя перетаскивается мышью/пальцем
+- **Свайп вправо** — сохранить фильм в «Буду смотреть»
+- **Свайп влево** — пропустить
+- **Кнопки управления** — альтернатива свайпу
+- **Клавиатура** — `←` пропустить, `→` сохранить, `Ctrl+Z` отменить
+- **Undo** — отмена последнего свайпа
+- **Watchlist** — список сохранённых с возможностью удаления
+- **Автозагрузка** — новые фильмы подгружаются когда колода заканчивается
+- **Сохранение** — watchlist хранится в localStorage
+- **Адаптивность** — работает на мобильных (≥375px) и десктопе
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Стек
 
-## Expanding the ESLint configuration
+| Технология | Версия |
+|---|---|
+| React | 19 |
+| TypeScript | strict |
+| Vite | 7 |
+| Tailwind CSS | 4 |
+| Zustand | 5 |
+| Framer Motion | 12 |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Установка и запуск
+```bash
+# Клонировать репозиторий
+git clone 
+cd movie-swipe
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Установить зависимости
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# Запустить в режиме разработки
+npm run dev

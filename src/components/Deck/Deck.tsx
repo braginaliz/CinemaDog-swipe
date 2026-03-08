@@ -5,6 +5,7 @@ import { ActionButtons } from '../UI/ActionButtons'
 import { Loader } from '../UI/Loader'
 import { ErrorMessage } from '../UI/ErrorMessage'
 import { EmptyState } from '../UI/EmptyState'
+import { useKeyboardSwipe } from '../../hooks/useKeyboardSwipe'
 
 export function Deck() {
   const {
@@ -37,6 +38,13 @@ export function Deck() {
   const handleSkip = useCallback(() => {
     if (topMovie) skipMovie(topMovie)
   }, [topMovie, skipMovie])
+
+  useKeyboardSwipe({
+    onLeft: handleSkip,
+    onRight: handleSave,
+    onUndo: undoLastSwipe,
+    disabled: !topMovie || isLoading,
+  })
 
   if (error && uniqueDeck.length === 0) {
     return (
@@ -92,6 +100,13 @@ export function Deck() {
       {isLoading && uniqueDeck.length > 0 && (
         <p className="text-sm text-pink-400 font-medium animate-pulse">
           Загружаем ещё фильмы…
+        </p>
+      )}
+
+      {/* Keyboard hint */}
+      {topMovie && !isLoading && (
+        <p className="text-[11px] text-pink-300/70 font-medium select-none">
+          ← пропустить &nbsp;·&nbsp; сохранить → &nbsp;·&nbsp; Ctrl+Z отменить
         </p>
       )}
 

@@ -127,7 +127,7 @@ function TabButtons({
       >
         <HeartIcon filled={activeTab === 'watchlist'} />
         <span className="truncate">
-          <span className="xs:hidden">Мои фильмы</span>
+          <span className="xs:hidden">Буду смотреть</span>
         </span>
         {watchlist.length > 0 && (
           <span className="
