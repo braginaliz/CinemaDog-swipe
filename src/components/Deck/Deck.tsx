@@ -70,7 +70,7 @@ export function Deck() {
       flex flex-col items-center gap-4 pt-4 pb-6
     "
     >
-      <div className="relative w-full" style={{ height: "min(580px, 75dvh)" }}>
+      <div className="relative w-full" style={{ height: "min(530px, 75dvh)" }}>
         {isLoading && uniqueDeck.length === 0 ? (
           <Loader />
         ) : uniqueDeck.length === 0 ? (
