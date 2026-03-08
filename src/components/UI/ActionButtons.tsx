@@ -35,7 +35,7 @@ export function ActionButtons({ onSkip, onSave, onUndo, canUndo, disabled }: Act
           focus:outline-none focus:ring-2 focus:ring-pink-200 focus:ring-offset-2 focus:ring-offset-white
         "
       >
-        ↺
+        ↺&#xFE0E;
       </button>
 
       {/* Skip */}
