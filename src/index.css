@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -17,7 +17,7 @@
   --color-rose-500: #ff7594;
   --color-rose-600: #f4406a;
 
---font-sans: 'Sora', system-ui, sans-serif;
+  --font-sans: "Sora", system-ui, sans-serif;
 
   --shadow-card: 0 8px 40px -8px rgba(249, 87, 173, 0.12);
   --shadow-card-hover: 0 16px 56px -8px rgba(249, 87, 173, 0.22);
@@ -32,7 +32,13 @@
   body {
     margin: 0;
     font-family: var(--font-sans);
-    background: linear-gradient(160deg, #fff5fb 0%, #ffe8f5 40%, #ffd6ee 70%, #fff0f8 100%);
+    background: linear-gradient(
+      160deg,
+      #fff5fb 0%,
+      #ffe8f5 40%,
+      #ffd6ee 70%,
+      #fff0f8 100%
+    );
     min-height: 100dvh;
     color: #a0336e;
     overflow-x: hidden;
@@ -64,11 +70,11 @@
   .glass {
     background: rgba(255, 255, 255, 0.55);
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 180, 220, 0.30);
+    border: 1px solid rgba(255, 180, 220, 0.3);
   }
 
   .glass-pink {
-    background: rgba(255, 200, 235, 0.40);
+    background: rgba(255, 200, 235, 0.4);
     backdrop-filter: blur(18px);
     border: 1px solid rgba(255, 150, 210, 0.35);
   }

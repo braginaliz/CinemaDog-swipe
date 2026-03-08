@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect } from "react";
 
 interface UseKeyboardSwipeOptions {
-  onLeft: () => void
-  onRight: () => void
-  onUndo: () => void
-  disabled?: boolean
+  onLeft: () => void;
+  onRight: () => void;
+  onUndo: () => void;
+  disabled?: boolean;
 }
 
 export function useKeyboardSwipe({
@@ -15,31 +15,31 @@ export function useKeyboardSwipe({
 }: UseKeyboardSwipeOptions): void {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (disabled) return
+      if (disabled) return;
 
-      const tag = (e.target as HTMLElement).tagName
-      if (tag === 'INPUT' || tag === 'TEXTAREA') return
+      const tag = (e.target as HTMLElement).tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
 
       switch (e.key) {
-        case 'ArrowLeft':
-          e.preventDefault()
-          onLeft()
-          break
-        case 'ArrowRight':
-          e.preventDefault()
-          onRight()
-          break
-        case 'z':
-        case 'Z':
+        case "ArrowLeft":
+          e.preventDefault();
+          onLeft();
+          break;
+        case "ArrowRight":
+          e.preventDefault();
+          onRight();
+          break;
+        case "z":
+        case "Z":
           if (e.ctrlKey || e.metaKey) {
-            e.preventDefault()
-            onUndo()
+            e.preventDefault();
+            onUndo();
           }
-          break
+          break;
       }
-    }
+    };
 
-    document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [onLeft, onRight, onUndo, disabled])
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onLeft, onRight, onUndo, disabled]);
 }

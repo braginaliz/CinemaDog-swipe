@@ -1,67 +1,114 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useMovieStore } from '../../store/useMovieStore'
-import { EmptyState } from '../UI/EmptyState'
-import type { Movie } from '../../types/movie'
-
-// ─── Icons ───────────────────────────────────────────────────────────────────
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useMovieStore } from "../../store/useMovieStore";
+import { EmptyState } from "../UI/EmptyState";
+import type { Movie } from "../../types/movie";
 
 const FilmIcon = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
-    stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="2" y="2" width="20" height="20" rx="2.5" />
     <path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5" />
   </svg>
-)
+);
 
 const StarIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24"
-    fill="currentColor" stroke="none">
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    stroke="none"
+  >
     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
   </svg>
-)
+);
 
 const CalendarIcon = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-    stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="3" y="4" width="18" height="18" rx="2" />
     <path d="M16 2v4M8 2v4M3 10h18" />
   </svg>
-)
+);
 
 const TrashIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-    stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="3 6 5 6 21 6" />
     <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
     <path d="M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
   </svg>
-)
+);
 
 const XIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-    stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
-)
+);
 
 const LayersIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-    stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polygon points="12 2 2 7 12 12 22 7 12 2" />
     <polyline points="2 17 12 22 22 17" />
     <polyline points="2 12 12 17 22 12" />
   </svg>
-)
+);
 
-// ─── WatchlistItem ────────────────────────────────────────────────────────────
-
-function WatchlistItem({ movie, onRemove }: { movie: Movie; onRemove: () => void }) {
-  const [imgError, setImgError] = useState(false)
+function WatchlistItem({
+  movie,
+  onRemove,
+}: {
+  movie: Movie;
+  onRemove: () => void;
+}) {
+  const [imgError, setImgError] = useState(false);
   const year = movie.release_date
     ? new Date(movie.release_date).getFullYear()
-    : 'N/A'
+    : "N/A";
 
   return (
     <motion.div
@@ -79,7 +126,6 @@ function WatchlistItem({ movie, onRemove }: { movie: Movie; onRemove: () => void
         transition-all duration-200
       "
     >
-      {/* Poster */}
       <div className="flex-shrink-0 w-14 h-20 rounded-xl overflow-hidden bg-gradient-to-br from-pink-100 to-rose-100 border border-pink-200/40 flex items-center justify-center">
         {movie.poster_path && !imgError ? (
           <img
@@ -95,7 +141,6 @@ function WatchlistItem({ movie, onRemove }: { movie: Movie; onRemove: () => void
         )}
       </div>
 
-      {/* Info */}
       <div className="flex-1 min-w-0 flex flex-col justify-center gap-1">
         <div className="flex items-start justify-between gap-2">
           <h3 className="text-sm font-bold text-pink-900 leading-snug line-clamp-2">
@@ -122,7 +167,6 @@ function WatchlistItem({ movie, onRemove }: { movie: Movie; onRemove: () => void
         )}
       </div>
 
-      {/* Remove button */}
       <button
         onClick={onRemove}
         className="
@@ -139,13 +183,12 @@ function WatchlistItem({ movie, onRemove }: { movie: Movie; onRemove: () => void
         <XIcon />
       </button>
     </motion.div>
-  )
+  );
 }
 
-// ─── Watchlist ────────────────────────────────────────────────────────────────
-
 export function Watchlist() {
-  const { watchlist, removeFromWatchlist, clearWatchlist, setActiveTab } = useMovieStore()
+  const { watchlist, removeFromWatchlist, clearWatchlist, setActiveTab } =
+    useMovieStore();
 
   if (watchlist.length === 0) {
     return (
@@ -154,17 +197,15 @@ export function Watchlist() {
         description="Свайпните фильм вправо, чтобы добавить его в список «Буду смотреть»"
         icon={<FilmIcon />}
         action={{
-          label: 'К колоде',
-          onClick: () => setActiveTab('deck'),
+          label: "К колоде",
+          onClick: () => setActiveTab("deck"),
         }}
       />
-    )
+    );
   }
 
   return (
     <div className="flex flex-col gap-3 px-4 pb-6">
-
-      {/* Header row */}
       <div className="flex items-center justify-between pt-1 pb-0.5">
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center text-white">
@@ -173,13 +214,15 @@ export function Watchlist() {
           <span className="text-base font-black text-pink-900 tracking-tight">
             Буду смотреть
           </span>
-          <span className="
+          <span
+            className="
             min-w-[22px] h-5 px-1.5 rounded-full
             bg-gradient-to-r from-pink-500 to-rose-500
             text-white text-[11px] font-extrabold
             flex items-center justify-center tabular-nums
-          ">
-            {watchlist.length > 99 ? '99+' : watchlist.length}
+          "
+          >
+            {watchlist.length > 99 ? "99+" : watchlist.length}
           </span>
         </div>
 
@@ -199,7 +242,6 @@ export function Watchlist() {
         </button>
       </div>
 
-      {/* List */}
       <AnimatePresence mode="popLayout">
         {watchlist.map((movie) => (
           <WatchlistItem
@@ -209,7 +251,6 @@ export function Watchlist() {
           />
         ))}
       </AnimatePresence>
-
     </div>
-  )
+  );
 }

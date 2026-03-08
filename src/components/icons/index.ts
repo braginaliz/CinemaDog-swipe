@@ -1,0 +1,10 @@
+export { StarIcon } from "./StarIcon";
+export { FilmIcon } from "./FilmIcon";
+export { PersonIcon } from "./PersonIcon";
+export { StarBadgeIcon } from "./StarBadgeIcon";
+export { ChevronIcon } from "./ChevronIcon";
+export { HeartIcon } from "./HeartIcon";
+export { XIcon } from "./XIcon";
+export { LayersIcon } from "./LayersIcon";
+export { HeaderFilmIcon } from "./HeaderFilmIcon";
+export { HeaderHeartIcon } from "./HeaderHeartIcon";
