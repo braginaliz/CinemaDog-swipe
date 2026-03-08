@@ -7,5 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/movie-swipe/',
+  base: "/CinemaDog-swipe/",
 })
