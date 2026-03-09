@@ -92,7 +92,7 @@ function TabButtons({
         `}
       >
         <LayersIcon />
-        <span className="truncate">Колода</span>
+        <span className="truncate">Фильмы</span>
       </button>
 
       <button
