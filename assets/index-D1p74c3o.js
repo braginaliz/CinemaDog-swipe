@@ -32,7 +32,7 @@ Error generating stack: `+a.message+`
           text-xs xs:text-sm lg:text-base
           font-bold transition-all duration-200
           ${i==="deck"?"bg-white text-pink-600 border border-pink-200/80 shadow-sm":"text-pink-400 hover:text-pink-600 hover:bg-white/50"}
-        `,children:[T.jsx(Zx,{}),T.jsx("span",{className:"truncate",children:"Колода"})]}),T.jsxs("button",{onClick:()=>l("watchlist"),className:`
+        `,children:[T.jsx(Zx,{}),T.jsx("span",{className:"truncate",children:"Фильмы"})]}),T.jsxs("button",{onClick:()=>l("watchlist"),className:`
           flex-1 relative flex items-center justify-center gap-1.5 xs:gap-2
           py-1.5 xs:py-2
           px-3 xs:px-4 sm:px-6 lg:px-10 xl:px-14
