@@ -96,8 +96,11 @@ export const MovieCard = memo(function MovieCard({ movie }: MovieCardProps) {
   };
 
   return (
-    <div className="flex flex-col rounded-2xl overflow-hidden bg-white shadow-lg shadow-pink-100/60 border border-pink-100 h-full">
-      <div className="relative w-full flex-shrink-0 rounded-t-2xl overflow-hidden bg-pink-50 h-60 xs:h-64 sm:h-72 md:h-80 lg:h-88 xl:h-96 2xl:h-[26rem]">
+    // ключевое изменение: убираем overflow-hidden с корня,
+    // чтобы castOpen-попап мог выходить за пределы карточки
+    <div className="flex flex-col rounded-2xl overflow-visible bg-white shadow-lg shadow-pink-100/60 border border-pink-100 h-full">
+      {/* ── ПОСТЕР — занимает 2/3 карточки ── */}
+      <div className="relative flex-[2] min-h-0 rounded-t-2xl overflow-hidden bg-pink-50">
         {posterUrl ? (
           <img
             src={posterUrl}
@@ -117,6 +120,7 @@ export const MovieCard = memo(function MovieCard({ movie }: MovieCardProps) {
           </div>
         )}
 
+        {/* бейджи год / рейтинг */}
         <div className="absolute top-2 left-2 right-2 flex items-center justify-between">
           <span className="bg-black/50 backdrop-blur-sm text-white font-bold rounded-full text-[10px] px-1.5 py-0.5 sm:text-xs sm:px-2">
             {year}
@@ -127,6 +131,7 @@ export const MovieCard = memo(function MovieCard({ movie }: MovieCardProps) {
           </span>
         </div>
 
+        {/* градиент + заголовок поверх постера */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-2.5 pt-6 pb-2 sm:px-3">
           <h3 className="text-white font-bold leading-tight line-clamp-2 text-xs sm:text-sm">
             {movie.original_title}
@@ -134,7 +139,8 @@ export const MovieCard = memo(function MovieCard({ movie }: MovieCardProps) {
         </div>
       </div>
 
-      <div className="relative flex flex-col flex-1 gap-1 px-2.5 pt-2 pb-2 sm:gap-1.5 sm:px-3 sm:pt-2.5 sm:pb-2.5 2xl:gap-2 2xl:px-4 2xl:pt-3 2xl:pb-3">
+      {/* ── ОПИСАНИЕ — занимает 1/3 карточки ── */}
+      <div className="relative flex flex-col flex-[1] min-h-0 gap-1 px-2.5 pt-2 pb-2 sm:gap-1.5 sm:px-3 sm:pt-2.5 sm:pb-2.5 2xl:gap-2 2xl:px-4 2xl:pt-3 2xl:pb-3">
         <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-pink-200 to-transparent" />
 
         <div className="flex items-center justify-between">
@@ -146,11 +152,12 @@ export const MovieCard = memo(function MovieCard({ movie }: MovieCardProps) {
         </div>
 
         <div className="h-px bg-pink-50" />
-
         {movie.overview && (
-          <p className="text-pink-900/70 leading-relaxed flex-1 text-[9px] line-clamp-1 sm:text-[10px] sm:line-clamp-2 2xl:text-xs 2xl:line-clamp-2">
-            {movie.overview}
-          </p>
+          <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-pink-200/50 scrollbar-track-transparent hover:scrollbar-thumb-pink-300 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:transition-colors">
+            <p className="text-pink-900/70 leading-relaxed text-[9px] sm:text-[10px] 2xl:text-xs pr-1.5">
+              {movie.overview}
+            </p>
+          </div>
         )}
 
         {movie.casts && movie.casts.length > 0 && (

@@ -9,5 +9,5 @@ export function Loader() {
         Загружаем фильмы…
       </p>
     </div>
-  )
+  );
 }
